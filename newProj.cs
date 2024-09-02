@@ -6,15 +6,15 @@ class Node {
     public string color; 
     public string make; 
     public string accidents; 
-    public Node next = null; 
-    public Node prev = null; 
+    public Node next; 
+    public Node prev;     
     public int index; 
 }
 
 class LinkedList { 
     int numNodes = 0; 
-    Node head = null; 
-    Node tail = null; 
+    Node head; 
+    Node tail; 
 
     public void addNode(string Name, string Make, int Year, string Color, string Accidents) { 
         Node newNode = new Node(); 
@@ -95,10 +95,52 @@ class LinkedList {
 class Program { 
     
     static void Main(string[] args) {
-        Console.WriteLine("hello world"); 
+    
         LinkedList test = new LinkedList(); 
-
+        string option = ""; 
         test.addNode("Toyota", "Camry", 2017, "Blue", "Yes"); 
         test.findNode("Toyota", "Camry"); 
+        while (option != "4") { 
+            Console.WriteLine("Pick from the following options: "); 
+            Console.WriteLine("1. Add a Car");
+            Console.WriteLine("2. Find a Car");
+            Console.WriteLine("3. Delete a Car");
+            Console.WriteLine("4. Quit App");
+            option = Console.ReadLine(); 
+            if (option == "1") { 
+                Console.WriteLine("Give the name of the company: "); 
+                string Name = Console.ReadLine(); 
+                Console.WriteLine("Give the name of the make: "); 
+                string Make = Console.ReadLine(); 
+                Console.WriteLine("Give the year: "); 
+                int Year = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Give the color: "); 
+                string Color = Console.ReadLine(); 
+                Console.WriteLine("Was there any accidents with this vehicle (yes or no): "); 
+                string Accidents = Console.ReadLine(); 
+                test.addNode(Name, Make, Year, Color, Accidents); 
+
+            }
+            if (option == "2") { 
+                Console.WriteLine("Give the name of the company: "); 
+                string Name = Console.ReadLine(); 
+                Console.WriteLine("Give the make of the car: "); 
+                string Make = Console.ReadLine(); 
+                test.findNode(Name, Make); 
+            }
+            if (option == "3") {
+                Console.WriteLine("Give the name of the company: "); 
+                string Name = Console.ReadLine(); 
+                Console.WriteLine("Give the make of the car: ");
+                string Make = Console.ReadLine(); 
+                test.deleteNode(Name, Make);  
+
+            }
+
+        }
+        
+
+
+        
     }
 }
